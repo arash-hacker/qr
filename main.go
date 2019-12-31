@@ -28,7 +28,7 @@ func main(){
 
 	// g.SumExposBy(200)
 	// fmt.Println(g.GetAll())
-	g.GenGalois(10);
-	fmt.Println(g.GetAll())
+	f:=g.GenGalois(10);
+	fmt.Println(f.GetAll())
 
 }
