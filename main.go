@@ -1,34 +1,29 @@
-package main;
+package main
 
 import (
 	"fmt"
-	gg "generator_polynomial_galois/gpg"
-
+	"qr/utils"
 )
 
-func main(){
-	fmt.Println("ya");
+func main() {
+	// fmt.Println("ya");
+	// g:=gg.GenPoly{}
+	// f:=g.GenGalois(63);
+	// fmt.Println(f.GetAll())
+	v:=1
+	e:='Q'
+	t:='A'
+	// n := utils.Number{"8675309"}
+	// fmt.Println(n.Parse())
+	m := utils.Alpha{"HELLO WORLD"}
+	//o := utils.Byte{"Hello, world!"}
+	//fmt.Println(o.Parse())
+	fmt.Println(
+		utils.BreakUp8Bit("HELLO WORLD",m.Parse(),v,e,t),
+	)
+	
+	
 
-	g:=gg.GenPoly{}
-	// g.Init(
-	// 	map[int]int{
-	// 		240:1,
-	// 		230:7,
-	// 		210:5,
-	// 		300:12,
-	// 		55:4,
-	// 	},
-	// )
 
-	// g.Sort()
-	// fmt.Println(g.GetAll())
-
-	// g.MultiplyCoesBy(3)
-	// fmt.Println(g.GetAll())
-
-	// g.SumExposBy(200)
-	// fmt.Println(g.GetAll())
-	f:=g.GenGalois(10);
-	fmt.Println(f.GetAll())
-
+	//fmt.Println(version,error_code_level)
 }
