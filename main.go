@@ -12,14 +12,11 @@ func main() {
 	// fmt.Println(f.GetAll())
 	v:=1
 	e:='Q'
-	t:='A'
-	// n := utils.Number{"8675309"}
-	// fmt.Println(n.Parse())
-	m := utils.Alpha{"HELLO WORLD"}
-	//o := utils.Byte{"Hello, world!"}
-	//fmt.Println(o.Parse())
+	t:='N'
+	m := utils.Alpha{"876876"}
+	//TODO create object polymorphism
 	fmt.Println(
-		utils.BreakUp8Bit("HELLO WORLD",m.Parse(),v,e,t),
+		utils.BreakUp8Bit(m.Data,m.Parse(),v,e,t),
 	)
 	
 	
