@@ -1,14 +1,19 @@
 package utils
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"regexp"
+)
 
 //https://www.thonky.com/qr-code-tutorial/data-encoding
 var Mode = map[rune]string{
-	'N': "0010",
+	'N': "0001",
 	'A': "0010",
 	'B': "0100",
 	'K': "1000",
 }
+
 func CharacterCountIndicator(v int, t rune) int {
 	if v >= 1 && v <= 9 {
 		return map[rune]int{
@@ -84,14 +89,13 @@ func AlphaNumericValue(c byte) int {
 		':': 44,
 	}[c]
 }
-func BreakUp8Bit(orgi string, s string, v int, e rune,t rune) string {
+func BreakUp8Bit(orgi string, s string, v int, e rune, t rune) string {
 
-	fmt.Println(">>> ",GetECCW(v, e),Mode[t],fmt.Sprintf("%0*b",CharacterCountIndicator(v,t) ,len(orgi)),s)
-	s=Mode[t]+fmt.Sprintf("%0*b",CharacterCountIndicator(v,t) ,len(orgi))+s
+	s = Mode[t] + fmt.Sprintf("%0*b", CharacterCountIndicator(v, t), len(orgi)) + s
 	//will be reach capacity with <=4 zeros?so add it add <=4 zeros
 	//not?add 0000
 	//still not ? reach multipication of 8 by adding 0 nex add  11101100 00010001
-	eccw := GetECCW(v, e)
+	eccw := GetECCWBytesNeed(v, e)
 	if len(s)+4 >= eccw {
 		rem := eccw - len(s)
 		for i := 0; i < rem; i++ {
@@ -106,23 +110,35 @@ func BreakUp8Bit(orgi string, s string, v int, e rune,t rune) string {
 				s = s + "0"
 			}
 		}
-		fmt.Println(s)
 		if len(s) != eccw {
 			tilLast := (eccw - len(s)) / 8
 			for i := 0; i < tilLast; i++ {
-				//11101100 00010001 
-				if i%2==0{
+				//11101100 00010001
+				if i%2 == 0 {
 					s = s + "11101100"
-				}else{
+				} else {
 					s = s + "00010001"
 				}
 			}
 		}
 	}
-	fmt.Println(s)
 	if len(s) > eccw {
 		panic("wrong size of bitcodes")
 	}
 	return s
+}
+func ConvertToMessagePoly(s string) map[int]int{
+	r, _ := regexp.Compile("........")
+	datas := r.FindAllString(s, -1)
+	ints:=[]int{}
+	for i := 0; i < len(datas); i++ {
+		d,_:=strconv.ParseInt(datas[i],2,16)
+		ints=append(ints,int(d))
+	}
+	poly:=map[int]int{}
 
+	for i := len(ints)-1; i >=0 ; i-- {
+		poly[len(ints)-1-i]=ints[i]
+	}
+	return poly
 }

@@ -7,16 +7,30 @@ package utils
 //Number of Blocks in Group 2 	
 //Number of Data Codewords in Each of Group 2's Blocks 	
 //Total Data Codewords
-func GetECCW(v int,e rune) int{
-	mod := map[rune]int{
-		'L': 0,
-		'M': 1,
-		'Q': 2,
-		'H': 3,
-	}[e]
-
+var modes = map[rune]int{
+	'L': 0,
+	'M': 1,
+	'Q': 2,
+	'H': 3,
+}
+func GetECCWBytesNeed(v int,e rune) int{
+	mod:=modes[e]
 	return ECCW[v][mod][0]*8
-
+}
+func GetECCWTotalNumberOfCodeWord(v int,e rune) int{
+	mod := modes[e]
+	return ECCW[v][mod][0]
+}
+func GetECCWCount(v int,e rune) int{
+	mod := modes[e]
+	return ECCW[v][mod][1]
+}
+func GetGroupBlock(v int,e rune)map[string][]int{
+	mod := modes[e]
+	return map[string][]int{
+		"GROUP1":{ECCW[v][mod][2],ECCW[v][mod][3]},
+		"GROUP2":{ECCW[v][mod][4],ECCW[v][mod][5]},
+	}
 }
 var ECCW=map[int][][]int{
 	 1:{{	19,			7,	1,	19,	0,	0	,},  //L

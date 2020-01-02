@@ -9,7 +9,7 @@ type Alpha struct {
 	Data string
 }
 
-func (n *Alpha) Parse() string {
+func (n *Alpha) ParseBinary() string {
 	r, _ := regexp.Compile("..")
 	datas := r.FindAllString(n.Data, -1)
 
