@@ -20,16 +20,22 @@ func main() {
 	GPG2 := gpg.GenGalois(
 		utils.GetECCWCount(v, e),
 	)
-	div:=GPG1.Divide(
-		GPG2, 
-		utils.GetECCWTotalNumberOfCodeWord(v, e))
+	DIV := GPG1.Divide(GPG2)
 
 	GPG1.SetGroupBlock(
-		utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t), 
+		utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t),
 		utils.GetGroupBlock(v, e))
 
+	GPG1.SetGroupBlockECC(
+		utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t),
+		utils.GetGroupBlock(v, e),
+		utils.GetECCWTotalNumberOfCodeWord(v, e),
+		utils.GetECCWCount(v, e),
+	)
+	s:=GPG1.Serialize(utils.GetGroupBlock(v,e)["GROUP1"][0]+utils.GetGroupBlock(v,e)["GROUP2"][0])
 	//fmt.Println(m.ParseBinary())
-	fmt.Println(utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t), )
-	fmt.Println(GPG1.GroupBlock)
-	fmt.Println(div)
+	//fmt.Println(utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t), )
+	DIV.ToAntilog()
+
+	fmt.Println(s)
 }

@@ -7,6 +7,7 @@ package utils
 //Number of Blocks in Group 2 	
 //Number of Data Codewords in Each of Group 2's Blocks 	
 //Total Data Codewords
+//https://www.thonky.com/qr-code-tutorial/error-correction-table
 var modes = map[rune]int{
 	'L': 0,
 	'M': 1,
