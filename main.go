@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	v := 5
+	v := 15
 	e := 'Q'
 	t := 'A'
 	m := utils.Alpha{"MONA JOON ARASHI "}
@@ -17,10 +17,6 @@ func main() {
 		utils.ConvertToMessagePoly(
 			utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t)),
 	)
-	GPG2 := gpg.GenGalois(
-		utils.GetECCWCount(v, e),
-	)
-	DIV := GPG1.Divide(GPG2,utils.GetECCWCount(v, e),)
 
 	GPG1.SetGroupBlock(
 		utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t),
@@ -31,8 +27,7 @@ func main() {
 		utils.GetGroupBlock(v, e),
 		utils.GetECCWCount(v, e),
 	)
-	s:=GPG1.Serialize(utils.GetGroupBlock(v,e)["GROUP1"][0]+utils.GetGroupBlock(v,e)["GROUP2"][0])
-	DIV.ToAntilog()
+	s:=GPG1.Serialize(utils.GetGroupBlock(v,e)["GROUP1"][0]+utils.GetGroupBlock(v,e)["GROUP2"][0],v)
 	fmt.Println(s)
 
 }
