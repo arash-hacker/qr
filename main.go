@@ -10,7 +10,7 @@ func main() {
 	v := 5
 	e := 'Q'
 	t := 'A'
-	m := utils.Alpha{"MONA JOON ARASHI "}
+	m := utils.Alpha{"HELLO WORLD"}
 	//TODO create object polymorphism
 
 	GPG1 := gpg.NewAntiLog(
