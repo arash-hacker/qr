@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	v := 15
+	v := 5
 	e := 'Q'
 	t := 'A'
 	m := utils.Alpha{"MONA JOON ARASHI "}

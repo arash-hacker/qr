@@ -132,6 +132,9 @@ func AlphaNumericValue(c byte) int {
 		':': 44,
 	}[c]
 }
+func QrSize(v int) int{
+	return ((v-1)*4)+21
+}
 func BreakUp8Bit(orgi string, s string, v int, e rune, t rune) string {
 
 	s = Mode[t] + fmt.Sprintf("%0*b", CharacterCountIndicator(v, t), len(orgi)) + s
