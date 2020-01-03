@@ -10,7 +10,7 @@ func main() {
 	v := 5
 	e := 'Q'
 	t := 'A'
-	m := utils.Alpha{"HELLO WORLD"}
+	m := utils.Alpha{"MONA JOON ARASHI "}
 	//TODO create object polymorphism
 
 	GPG1 := gpg.NewAntiLog(
@@ -20,7 +20,7 @@ func main() {
 	GPG2 := gpg.GenGalois(
 		utils.GetECCWCount(v, e),
 	)
-	DIV := GPG1.Divide(GPG2)
+	DIV := GPG1.Divide(GPG2,utils.GetECCWCount(v, e),)
 
 	GPG1.SetGroupBlock(
 		utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t),
@@ -29,13 +29,10 @@ func main() {
 	GPG1.SetGroupBlockECC(
 		utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t),
 		utils.GetGroupBlock(v, e),
-		utils.GetECCWTotalNumberOfCodeWord(v, e),
 		utils.GetECCWCount(v, e),
 	)
 	s:=GPG1.Serialize(utils.GetGroupBlock(v,e)["GROUP1"][0]+utils.GetGroupBlock(v,e)["GROUP2"][0])
-	//fmt.Println(m.ParseBinary())
-	//fmt.Println(utils.BreakUp8Bit(m.Data, m.ParseBinary(), v, e, t), )
 	DIV.ToAntilog()
-
 	fmt.Println(s)
+
 }
