@@ -7,9 +7,10 @@ import (
 )
 
 func main() {
-	v := 1
+	v := 3
 	e := 'Q'
 	t := 'A'
+	msk:= 7
 	m := utils.Alpha{"HELLO WORLD"}
 	//TODO create object polymorphism
 
@@ -28,5 +29,5 @@ func main() {
 		utils.GetECCWCount(v, e),
 	)
 	s := GPG1.Serialize(utils.GetGroupBlock(v, e)["GROUP1"][0]+utils.GetGroupBlock(v, e)["GROUP2"][0], v)
-	painter.PaintV(v, 10, s)
+	painter.PaintV(v,e,msk, 10, s)
 }
