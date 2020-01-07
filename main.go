@@ -1,14 +1,14 @@
 package main
 
 import (
-	"generator_polynomial_galois/gpg"
 	"fmt"
-	"qr/utils"
-	"qr_presenter/painter"
+	"github.com/arshiamidos/generator_polynomial_galois/gpg"
+	"github.com/arshiamidos/qr/utils"
+	"github.com/arshiamidos/qr_presenter/painter"
 )
 
 func main() {
-	v := 40
+	v := 1
 	e := 'L'
 	t := 'B'
 	m := utils.Byte{"arash midos 666"}
