@@ -5,8 +5,10 @@ tutorials www.thonky.com
 [] - check penalties   
 [] - type polymorphism 
 
-![HELLO WORLD with mask 0](QR_0.png)   
-![HELLO WORLD with mask 6](QR_6.png)   
-
-
-qr -gen "blah blah ..."
+![HELLO WORLD with generation stpes](shots/1.png)   
+![random works](shots/2.png)   
+![random works](shots/3.png)   
+![HELLO WORLD with generation stpes](shots/4.png)   
+![geeki](shots/5.png)   
+![arashmdidos 666](shots/6.png)   
+![qr 40!](shots/QR_40.png)   
