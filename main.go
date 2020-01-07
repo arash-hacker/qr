@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	v := 8
-	e := 'H'
+	v := 40
+	e := 'L'
 	t := 'B'
 	m := utils.Byte{"arash midos 666"}
 	
